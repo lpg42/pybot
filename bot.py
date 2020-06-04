@@ -17,7 +17,7 @@ yt = YouTubeDataAPI(key)
 sys.path.insert(0, './cogs')
 
 #client from discord api and cog extensions load up on le stack
-bot = commands.Bot(command_prefix="/", description="muug's personal bot for success")
+bot = commands.Bot(command_prefix="/", description="lpg personal bot for success")
 bot.load_extension('utility')
 bot.load_extension('media')
 
