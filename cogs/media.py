@@ -56,7 +56,7 @@ class Media(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def playmusic(self, ctx, *, url):
+    async def play(self, ctx, *, url):
 
         """search youtube for a song to play in voice channel"""
 
