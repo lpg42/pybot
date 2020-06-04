@@ -42,7 +42,7 @@ async def after_clear_files():
 
 #core audio/video command if cogs fail during development you can still query youtube search engine and post the top search. if you're going to expand into playlists, you'll want to mess with this function
 @bot.command(pass_context=True)
-async def play(ctx, *, query):
+async def youtube(ctx, *, query):
     searches = yt.search(query, max_results=1)
     res = list(searches[0].values())[0] 
     url = "https://www.youtube.com/watch?v=" + str(res)
