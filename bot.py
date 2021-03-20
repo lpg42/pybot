@@ -2,26 +2,25 @@ import os
 import sys
 import discord
 import config
-import youtube_dl
-import ffmpeg
 from discord.ext import commands, tasks
-from youtube_api import YouTubeDataAPI
 
-#globals pulled from config and such
+#global constants pulled from config and such
 token = config.config["token"]
 prefix = config.config["prefix"]
 key = config.config["key"]
-yt = YouTubeDataAPI(key)
 
 #creates cog subdirectory path for easy expansion into a sub directory... feel free to add your own
 sys.path.insert(0, './cogs')
 
-#client from discord api and cog extensions load up on le stack
-bot = commands.Bot(command_prefix="/", description="lpg personal bot for success")
+#client intiation from discord api and cog extensions load up on le stack, if you had whole new cog files, include them in the load up here
+bot = commands.Bot(command_prefix="/", description="jacobs content bot")
 bot.load_extension('utility')
 bot.load_extension('media')
 
-#on startup this clears server audio files... you're going to want to keep this ^^
+# deprecated because of youtube-dl removal - this can be repurposed for clearing files for music/vidya dl so im leaving the code in case of new funciton libararies
+
+"""
+
 for root, dirs, files in os.walk('.'):
     for fname in files:
         if fname.endswith('.webm'):
@@ -34,12 +33,18 @@ async def clear_files():
         for fname in files:
             if fname.endswith('.webm'):
                 os.remove(os.path.join(root, fname))
-
+                
 #same as above boio
 @clear_files.after_loop
 async def after_clear_files():
     print('youtube_dl files are cleared from the server every 300 minutes. Head to utility file in ./cogs to add more tasks!')
 
+"""
+
+#basic regex function for youtube url queries. its a nice command to skip copying of youtube urls to share vidya, but with youtube-dl deprecated the youtube api
+#is basically just clutter, can look into re-intiating this as a cog if asked and youtube API key is available (Forgot mine LOL).
+
+"""
 #core audio/video command if cogs fail during development you can still query youtube search engine and post the top search. if you're going to expand into playlists, you'll want to mess with this function
 @bot.command(pass_context=True)
 async def youtube(ctx, *, query):
@@ -47,6 +52,7 @@ async def youtube(ctx, *, query):
     res = list(searches[0].values())[0] 
     url = "https://www.youtube.com/watch?v=" + str(res)
     await ctx.send(url)
+"""
 
 #ready up && events
 @bot.event
