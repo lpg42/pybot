@@ -19,7 +19,6 @@ bot.load_extension('media')
 
 # deprecated because of youtube-dl removal - this can be repurposed for clearing files for music/vidya dl so im leaving the code in case of new funciton libararies
 
-"""
 
 for root, dirs, files in os.walk('.'):
     for fname in files:
@@ -39,12 +38,8 @@ async def clear_files():
 async def after_clear_files():
     print('youtube_dl files are cleared from the server every 300 minutes. Head to utility file in ./cogs to add more tasks!')
 
-"""
 
-#basic regex function for youtube url queries. its a nice command to skip copying of youtube urls to share vidya, but with youtube-dl deprecated the youtube api
-#is basically just clutter, can look into re-intiating this as a cog if asked and youtube API key is available (Forgot mine LOL).
 
-"""
 #core audio/video command if cogs fail during development you can still query youtube search engine and post the top search. if you're going to expand into playlists, you'll want to mess with this function
 @bot.command(pass_context=True)
 async def youtube(ctx, *, query):
@@ -52,7 +47,6 @@ async def youtube(ctx, *, query):
     res = list(searches[0].values())[0] 
     url = "https://www.youtube.com/watch?v=" + str(res)
     await ctx.send(url)
-"""
 
 #ready up && events
 @bot.event
